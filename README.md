@@ -28,17 +28,18 @@ git remote add upstream https://github.com/moveonha/AIAX_STUDY.git
 
 ```
 AIAX_STUDY/
-├── week01/
-│   ├── dongha/
-│   │   └── rest-api-practice/
-│   └── minji/
-├── week02/
-│   ├── dongha/
-│   └── minji/
+├── sang_hoon/
+│   ├── html/
+│   │   └── home.html
+│   └── server/
+├── yoo_jung/
+│   ├── html/
+│   │   └── home.html
+│   └── server/
 └── README.md
 ```
 
-> 각 주차별로 폴더를 만들고, 그 안에 **자기 이름/닉네임 폴더**를 만들어 실습 결과물을 정리해주세요!
+> 개인 폴더 내 내용만 수정해주세요!
 
 ---
 
