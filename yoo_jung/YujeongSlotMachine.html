@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>슬롯머신</title>
+        <style> /*GPT가 꾸며줌*/
+            body { text-align: center; font-size: 2rem; }
+            
+            /* 슬롯 컨테이너를 가로 정렬 */
+            .slot-container { 
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+                gap: 15px; /* 슬롯 간 간격 */
+                margin: 20px;
+            }
+    
+            /* 슬롯 디자인 */
+            .slot { 
+                width: 100px; 
+                height: 100px; 
+                border: 3px solid black; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                font-size: 3rem; 
+                background-color: white;
+                border-radius: 10px; /* 모서리를 둥글게 */
+            }
+    
+            button { 
+                font-size: 1.5rem; 
+                padding: 10px 20px; 
+                cursor: pointer; 
+                margin: 10px; 
+                border-radius: 5px;
+                border: none;
+            }
+            .start-btn { background-color: #4CAF50; color: white; }
+        .stop-btn { background-color: #f44336; color: white; }
+    </style>
+    </head>
+    <body>
+    <div class = "slot-container">
+        <div class = "slot" id = "slot1">🍀</div>
+        <div class = "slot" id = "slot2">🍀</div>
+        <div class = "slot" id = "slot3">🍀</div>
+    </div>
+        
+        <button onclick = "endSlots()">멈추기</button>
+        <p id = "result"></p>
+
+        <script>
+                const emoji = ["🍀", "⭐", "⛄", "💘", "🐬"] ;
+                let slots = ["", "",""];
+                let timer = [null, null, null];
+
+                function runSlot(index) {
+                timer[index] = setInterval(() => {
+                    let randomEmoji = emoji[Math.floor(Math.random() * emoji.length)];
+                document.getElementById(`slot${index + 1}`).innerText = randomEmoji;
+            }, 100);
+                }
+
+                function stopSlot(index) {
+                    clearInterval(timer[index]);
+                    slots[index] = document.getElementById(`slot${index + 1}`).innerText;
+                }
+
+                function startSlots() {  //index 값의 함수를
+                    runSlot(0);
+                    runSlot(1);
+                    runSlot(2);
+                }
+
+                function endSlots() {
+                    stopSlot(0);
+                    stopSlot(1);
+                    stopSlot(2);
+                    luck();
+                }
+                // 
+                function luck() {
+                    const numEmoji = new Set(slots);
+                    let resultText = "";
+
+                    if (numEmoji.size === 1) {
+                        resultText = "당첨";
+                    }
+                    else if (numEmoji.size === 2) {
+                        resultText = "2개 맞음";
+                    }
+                    else {
+                        resultText = "꽝";
+                    }
+
+                document.getElementById("result").innerText = resultText;
+                }
+                startSlots();
+        </script>
+    </body>
+</html>
+
+<!--같은 이모지가 두 번 이상 연속으로 나오는 경우 멈춘 것처럼 보이기 때문에 
+연속으로 나오는 것을 막으면 더 나아질 것-->
